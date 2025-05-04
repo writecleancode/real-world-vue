@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import EventListView from '../views/EventList.vue';
-import EventLayout from "@/views/event/Layout.vue";
+import EventLayout from '@/views/event/Layout.vue';
 import EventDetails from '@/views/event/Details.vue';
 import EventRegister from '@/views/event/Register.vue';
 import EventEdit from '@/views/event/Edit.vue';
@@ -16,7 +16,7 @@ const router = createRouter({
 			props: route => ({ page: parseInt(route.query.page as any) || 1 }),
 		},
 		{
-			path: '/event/:id',
+			path: '/events/:id',
 			name: 'event-layout',
 			props: true,
 			component: EventLayout,
@@ -39,9 +39,19 @@ const router = createRouter({
 			],
 		},
 		{
-			path: '/about',
+			path: '/event/:afterEvent(.*)',
+			redirect: to => {
+				return { path: 'events/' + to.params.afterEvent };
+			},
+		},
+		{
+			path: '/about-us',
 			name: 'about',
 			component: AboutView,
+		},
+		{
+			path: '/about',
+			redirect: { name: 'about' },
 		},
 	],
 });

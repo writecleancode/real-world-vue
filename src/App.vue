@@ -17,7 +17,7 @@ import { RouterLink, RouterView } from 'vue-router';
 </template>
 
 <style>
-#layout {
+#app {
 	font-family: Avenir, Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -25,20 +25,24 @@ import { RouterLink, RouterView } from 'vue-router';
 	color: #2c3e50;
 }
 
-nav {
+#nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 16px;
 	padding: 30px;
 }
 
-nav a {
+#nav a {
 	font-weight: bold;
 	color: #2c3e50;
 }
 
-nav a.router-link-exact-active {
+#nav a.router-link-exact-active {
 	color: #42b983;
 }
 
-h2 {
+h4 {
 	font-size: 20px;
 }
 </style>

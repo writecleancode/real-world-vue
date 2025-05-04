@@ -3,11 +3,10 @@ import EventService from '@/services/EventService';
 import { onMounted, ref } from 'vue';
 
 const props = defineProps<{
-	id: number;
+	id: string;
 }>();
 
 const event = ref<any>(null);
-const id = ref(123);
 
 onMounted(() => {
 	EventService.getEvent(props.id)
@@ -19,8 +18,12 @@ onMounted(() => {
 <template>
 	<div v-if="event">
 		<h1>{{ event.title }}</h1>
-		<p>{{ event.time }} on {{ event.date }} @ {{ event.location }}</p>
-		<p>{{ event.description }}</p>
+		<div id="nav">
+			<RouterLink :to="{ name: 'event-details' }">Details</RouterLink>
+			<RouterLink :to="{ name: 'event-register' }">Register</RouterLink>
+			<RouterLink :to="{ name: 'event-edit' }">Edit</RouterLink>
+		</div>
+		<RouterView :event />
 	</div>
 </template>
 
